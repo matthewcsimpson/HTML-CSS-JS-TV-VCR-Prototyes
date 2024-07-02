@@ -64,11 +64,17 @@ const baseChannelUpButton = document.querySelector(".base__button--channelup");
 const remoteChannelUpButton = document.querySelector(
   ".remote__functionbutton--channelup"
 );
+
 const baseChannelDownButton = document.querySelector(
   ".base__button--channeldown"
 );
 const remoteChannelDownButton = document.querySelector(
   ".remote__functionbutton--channeldown"
+);
+
+const numberButtons = document.querySelectorAll(".remote__number");
+const displayButton = document.querySelector(
+  ".remote__functionbutton--display"
 );
 
 // Functions
@@ -106,7 +112,6 @@ const powerSwitch = (tube, picture, display, channels) => {
  */
 const channelUp = (channels, tube, display) => {
   const isOn = document.querySelector(".crt__image--on");
-
   if (isOn) {
     const currentChannel = display.innerText;
     const currentChannelIndex = channels.findIndex(
@@ -134,15 +139,38 @@ const channelDown = (channels, tube, display) => {
     const currentChannelIndex = channels.findIndex(
       (channel) => channel.chan === currentChannel
     );
+
     const nextChannelIndex =
-      currentChannelIndex === 0 ? channels.length - 1 : currentChannelIndex - 1;
+      currentChannelIndex <= 0 ? channels.length - 1 : currentChannelIndex - 1;
     display.innerText = channels[nextChannelIndex].chan;
     tube.style.backgroundImage = `url(${channels[nextChannelIndex].img})`;
     channelDisplay(display);
   }
 };
 
+/**
+ * Select a channel directly.
+ * If the channel does not exist, display the channel number + static
+ * @param {Array} channels
+ * @param {Element} tube
+ * @param {Element} display
+ * @param {Array} channelInput
+ */
+const channelSelect = (channels, tube, display, input) => {
+  const channel = channels.find((channel) => channel.chan === input);
+  if (channel) {
+    display.innerText = channel.chan;
+    tube.style.backgroundImage = `url(${channel.img})`;
+    channelDisplay(display);
+  } else {
+    display.innerText = input;
+    tube.style.backgroundImage = `url(./assets/imgs/static.gif)`;
+    channelDisplay(display);
+  }
+};
+
 // Default
+const channelInput = [];
 display.innerText = channels[0].chan;
 tube.style.backgroundImage = `url(${channels[0].img})`;
 
@@ -169,4 +197,22 @@ baseChannelDownButton.addEventListener("click", () => {
 });
 remoteChannelDownButton.addEventListener("click", () => {
   channelDown(channels, tube, display);
+});
+
+// Number Buttons
+numberButtons.forEach((button) => {
+  button.addEventListener("click", () => {
+    const isOn = document.querySelector(".crt__image--on");
+    if (isOn) {
+      channelInput.push(button.innerText);
+      if (channelInput.length === 2) {
+        channelSelect(channels, tube, display, channelInput.join(""));
+        channelInput.length = 0;
+      }
+    }
+  });
+});
+
+displayButton.addEventListener("click", () => {
+  channelDisplay(display);
 });
