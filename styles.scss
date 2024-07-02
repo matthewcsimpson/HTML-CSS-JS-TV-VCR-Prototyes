@@ -1,5 +1,13 @@
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
+//  Mixins for Responsive Design
+$breakpoint-tablet: 769px;
+@mixin tablet {
+    @media all and (min-width: $breakpoint-tablet) {
+        @content;
+    }
+}
 
+// Font
+@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
 .press-start-2p {
     font-family: "Press Start 2P", system-ui;
     font-weight: 400;
@@ -16,15 +24,29 @@
     }
 }
 
-.container {
-    margin: 5rem auto 0;
-    width: 100%;
+// Button Press Animation
+@keyframes buttonpress {
+    to {
+        transform: translate(0.0625rem, 0.0625rem);
+    }
+}
 
+
+
+.container {
+    margin: 2rem auto 0;
+    min-width: 300px;
+    width: 90%;
+    height: 100%;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+
+    @include tablet {
+        width: 769px;
+    }
 
     .tv {
         width: 100%;
@@ -37,119 +59,127 @@
         .woodframe {
             border: 1rem solid SaddleBrown;
             width: calc(100% - 2rem);
-        }
+            .crt {
+                width: calc(100% - 1rem);
+                aspect-ratio: 4 / 3;
 
-        .crt {
-
-            width: calc(100% - 1rem);
-            aspect-ratio: 4 / 3;
-
-            background-color: #000011;
-            border-style: solid;
-            border-color: silver;
-            border-width: .5rem;
-
-            position: relative;
-
-            &__image {
-                width: 100%;
-                height: 100%;
-
-                background-repeat: no-repeat;
-                background-size: contain;
-                background-position: center;
-                background-color: #191919;
+                background-color: #181818;
+                border-style: solid;
+                border-color: silver;
+                border-width: 0.5rem;
 
                 position: relative;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-            }
 
-            &__screen {
-                width: 100%;
-                height: 100%; 
+                &__contents {
+                    width: 100%;
+                    aspect-ratio: 4/3;
+                    position: relative;
+                }
+                &__image {
+                    width: 100%;
+                    height: 100%;
 
-                background: linear-gradient(to top, #fff, #fff, #666666, #666666);
-                background-size: cover;
-                background-size: 100% .3125rem;
-                animation: scanlines;
-                animation-duration: 1s;
-                animation-iteration-count: infinite;
+                    background-repeat: no-repeat;
+                    background-size: contain;
+                    background-position: center;
 
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
+                    position: relative;
 
-                opacity: 0.25;
-            }
+                    display: none;
+                    &--on {
+                        display: block;
+                    }
+                }
 
-            &__bezel {
-                width: 100%;
-                height: 100%;
-                background-image: url("https://assets.codepen.io/8841541/bezel.png");
-                background-repeat: no-repeat;
-                background-size: 100% 100%;
+                &__screen {
+                    width: 100%;
+                    height: 100%;
 
-                position: absolute;
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                opacity: 1;
-            }
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
 
-            .channel {
-                width: 20%;
-                height: 20%;
+                    &--on {
+                        background: linear-gradient(to top, #fff, #fff, #666666, #666666);
+                        background-size: cover;
+                        background-size: 100% 0.3125rem;
+                        animation: scanlines;
+                        animation-duration: 1s;
+                        animation-iteration-count: infinite;
+                        opacity: 0.25;
+                    }
+                }
 
-                display: flex;
-                justify-content: center;
-                align-items: center;
+                &__bezel {
+                    width: 100%;
+                    height: 100%;
+                    background-image: url("./assets/bezel.png");
+                    background-repeat: no-repeat;
+                    background-size: 100% 100%;
 
-                color: white;
+                    position: absolute;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    left: 0;
+                    opacity: 1;
+                }
 
-                position: absolute;
-                top: 7.5%;
-                left: 7.5%;
+                .channel {
+                    width: 15%;
+                    aspect-ratio: 1 / 1;
+
+                    display: none;
+                    justify-content: center;
+                    align-items: center;
+
+                    color: white;
+                    background-color: blue;
+
+                    position: absolute;
+                    top: 7.5%;
+                    left: 7.5%;
+
+                    @extend .press-start-2p;
+
+                    &--on {
+                        display: flex;
+                    }
+                }
             }
         }
 
         .base {
             height: 1.5rem;
-            // width: 620px;
             width: 80%;
 
             background: #010101;
-            border-radius: 0 0 10px 10px;
+            border-radius: 0 0 0.625rem 0.625rem;
 
             display: flex;
             flex-direction: row-reverse;
             align-items: center;
 
             &__buttons {
-                /* width: 140px;
-                height: 25px; */
-
-                width: 40%;
+                width: 60%;
                 height: 1rem;
-                
+
                 margin-right: 1.25rem;
 
                 background: #191919;
 
                 display: flex;
                 justify-content: space-between;
+                align-items: center;
             }
 
             &__button {
                 width: 1.25rem;
                 height: 1.25rem;
 
-                font-size: .75rem;
+                font-size: 0.75rem;
                 color: white;
                 background: black;
 
@@ -157,6 +187,17 @@
                 justify-content: center;
                 align-items: center;
             }
+
+            &__lbl{
+                font-size: .25rem;
+                color: white;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+
+                @extend .press-start-2p;
+            }
+
             .up {
                 transform: rotate(-90deg);
             }
@@ -167,9 +208,99 @@
     }
 
     .shelf {
-        /* height: 100px;
-        width: 100px; */
-        background: blue;
-        display: none;
+        width: 100%;
+        height: 1rem;
+
+        background: #010101;
+    }
+
+    .remote {
+        width: 50%;
+        margin-top: 10%;
+
+        background-color: #111;
+
+        border: 2px solid silver;
+        border-radius: 0.625rem;
+        padding: 0.5rem;
+
+        // groupings
+        &__firstrowbuttons,
+        &__numbers,
+        &__functionbuttons {
+            width: 100%;
+
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        &__firstrowbuttons {
+            justify-content: space-around;
+            margin-bottom: 0.5rem;
+        }
+
+        &__numbers {
+            justify-content: space-around;
+                        flex-wrap: wrap;
+
+            margin-bottom: 0.5rem;
+        }
+
+        &__functionbuttons {
+            justify-content: space-around;
+        }
+
+        // Buttons
+        &__firstrowbutton,
+        &__number,
+        &__functionlbl,
+        &__functionbutton {
+            height: 1.5rem;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+            background: black;
+
+            font-size: 0.4rem;
+            color: white;
+            @extend .press-start-2p;
+
+            &:active {
+                animation: buttonpress 0.05s;
+            }
+        }
+
+        &__firstrowbutton {
+            width: 45%;
+            border: 0.5px dotted silver;
+        }
+
+        &__number {
+            width: 28%;
+            border: 0.5px dotted silver;
+        }
+
+        &__functiongroup {
+            width: 30%;
+
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+
+            &--mute {
+                justify-content: center;
+            }
+        }
+
+        &__functionlbl {
+            background: inherit;
+        }
+
+        &__functionbutton {
+            width: 100%;
+            border: 0.5px dotted silver;
+        }
     }
 }
