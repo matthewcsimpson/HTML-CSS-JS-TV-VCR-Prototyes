@@ -2,85 +2,154 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TV Demo</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TV Demo</title>
 
-    <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
-
-    <div class="container"><!-- Container Start-->
-        <div class="tv"><!-- TV Start -->
-            <div class="woodframe">
-                <div class="crt">
-                    <div class="crt__contents">
-                        <div class="crt__image"></div>
-                        <div class="channel">
-                            01
-                        </div>
-                        <div class="crt__screen"></div>
-                        <div class="crt__bezel"></div>
-                    </div>
+  <div class="container">
+    <div class="vcr">
+      <div class="vcrtop">
+        <div class="carriage carriage--open">
+          <div class="top"></div>
+          <div class="middle">
+            <div class="strut strut--left"></div>
+            <div class="tapespace">
+              <div class="cassette">
+                <div class="cassette__label">
+                  Detour
                 </div>
+                <div class="cassette__spacer"></div>
+              </div>
+              <div class="holder"></div>
             </div>
-            <div class="base">
-                <div class="base__buttons">
-                    <div class="base__button up"> &lt; </div>
-                    <div class="base__lbl"> vol </div>
-                    <div class="base__button down"> &gt; </div>
-                    <div class="base__button base__button--channeldown up"> &lt; </div>
-                    <div class="base__lbl"> chn </div>
-                    <div class="base__button base__button--channelup down"> &gt; </div>
-                    <div class="base__button base__button--power power"> Ø </div>
-                </div>
+            <div class="strut strut--right"></div>
+          </div>
+        </div>
+      </div>
+      <div class="vcrfront">
+        <div class="vcrfront__power">
+          <div class="powerbtn">
+            <div class="powerbutton">
+              <div class="powerbutton__light"></div>
+              <div class="powerbutton__lbl"></div>
+              ø
             </div>
-        </div><!-- TV End-->
-        <div class="shelf"><!-- Shelf Start-->
-
-        </div><!-- Shelf End-->
-
-        <div class="remote"><!-- Remote -->
-            <div class="remote__buttons">
-                <div class="remote__firstrowbuttons">
-                    <div class="remote__firstrowbutton remote__firstrowbutton--power">power</div>
-                </div>
-
-                <div class="remote__numbers">
-                    <div class="remote__number">1</div>
-                    <div class="remote__number">2</div>
-                    <div class="remote__number">3</div>
-                    <div class="remote__number">4</div>
-                    <div class="remote__number">5</div>
-                    <div class="remote__number">6</div>
-                    <div class="remote__number">7</div>
-                    <div class="remote__number">8</div>
-                    <div class="remote__number">9</div>
-                    <div class="remote__number">0</div>
-                </div>
-                <div class="remote__functionbuttons">
-                    <div class="remote__functiongroup">
-                        <div class="remote__functionbutton">+</div>
-                        <div class="remote__functionlbl">vol</div>
-                        <div class="remote__functionbutton">-</div>
-                    </div>
-                    <div class="remote__functiongroup remote__functiongroup--mute">
-                        <div class="remote__functionbutton remote__functionbutton--display">show</div>
-                        <div class="remote__functionbutton">mute</div>
-                        <div class="remote__functionlbl"></div>
-
-                    </div>
-                    <div class="remote__functiongroup">
-                        <div class="remote__functionbutton remote__functionbutton--channelup">+</div>
-                        <div class="remote__functionlbl">chn</div>
-                        <div class="remote__functionbutton remote__functionbutton--channeldown">-</div>
-                    </div>
-
-                </div>
+          </div>
+        </div>
+        <div class="vcrfront__controls">
+          <div class="playrecrewff">
+            <div class="playbtn">
+              <div class="playbutton">
+                ∆
+              </div>
             </div>
-        </div><!-- Remote End -->
-    </div><!-- Container End-->
+            <div class="recordbtn">
+              <div class="recordbutton">
+                <div class="recordicon">
+                  •
+                </div>
+              </div>
+            </div>
+            <div class="rewbtn">
+              <div class="rewbutton">
+                &lt;&lt;
+              </div>
+            </div>
+            <div class="ffbtn">
+              <div class="ffbutton">
+                &gt;&gt;
+              </div>
+            </div>
+          </div>
+          <div class="stoppause">
+            <div class="stopbtn">
+              <div class="stopbutton">
+                ■
+              </div>
+            </div>
+            <div class="pausebtn">
+              <div class="pausebutton">
+                ||
+              </div>
+            </div>
+          </div>
+          <div class="eject">
+            <div class="ejectbtn">
+              <div class="ejectbutton">
+                &#9167
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="vcrfront__display">
+          <div class="displayarea">
+            <div class="displaytext">
+              00:00:00
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="base"></div>
+    </div>
+    <div class="tv">
+      <div class="woodframe">
+        <div class="crt">
+          <div class="crt__contents">
+            <video class="crt__image"></video>
+            <div class="channel">
+              01
+            </div>
+            <div class="crt__screen"></div>
+            <div class="crt__bezel"></div>
+          </div>
+        </div>
+      </div>
+      <div class="base">
+        <div class="buttons">
+          <div class="button">
+            <div class="button--volumedown">
+              &#x2193;
+            </div>
+          </div>
+          <div class="button">
+            <div class="button--label">
+              vol
+            </div>
+          </div>
+          <div class="button">
+            <div class="button--volumeup">
+              &#x2191;
+            </div>
+          </div>
+          <div class="button">
+            <div class="button--label">
+              &nbsp;
+            </div>
+          </div>
+          <div class="button">
+            <div class="button--channeldown">
+              &#x2193;
+            </div>
+          </div>
+          <div class="button button--label">
+            chn
+          </div>
+          <div class="button button--channelup">
+            &#x2191;
+          </div>
+          <div class="button">
+            <div class="button--power">
+              Ø
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </body>
 <script type="text/javascript" src="./scripts.js"></script>
 

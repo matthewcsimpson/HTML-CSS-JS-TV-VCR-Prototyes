@@ -1,306 +1,631 @@
-//  Mixins for Responsive Design
-$breakpoint-tablet: 769px;
+$breakpoint-tablet: 767px;
+
+$maincolour: silver;
+$highlightcolour: darkgray;
+$darkcolour: black;
+$powerlightcolour: chartreuse;
+$recordbuttoncolour: orange;
+
+$buttonpressdistance: 0.0625rem;
+
+// Responsive
 @mixin tablet {
-    @media all and (min-width: $breakpoint-tablet) {
-        @content;
-    }
+  @media all and (min-width: $breakpoint-tablet) {
+    @content;
+  }
 }
 
-// Font
-@import url("https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap");
-.press-start-2p {
-    font-family: "Press Start 2P", system-ui;
-    font-weight: 400;
-    font-style: normal;
+// Animations
+@keyframes cassetteOpenClose {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100%);
+  }
 }
 
-// Scan Lines Animation
 @keyframes scanlines {
-    from {
-        background-position: 0 0;
-    }
-    to {
-        background-position: 0 -10px;
-    }
+  from {
+    background-position: 0 0;
+  }
+  to {
+    background-position: 0 -10px;
+  }
 }
 
-// Button Press Animation
-@keyframes buttonpress {
-    to {
-        transform: translate(0.0625rem, 0.0625rem);
-    }
+// Fonts
+@font-face {
+  font-family: "Digital-7";
+  src: url("https://assets.codepen.io/8841541/digital-7.ttf");
+  font-weight: normal;
 }
 
+@font-face {
+  font-family: "Marker";
+  src: url("https://assets.codepen.io/8841541/PermanentMarker-Regular.ttf");
+  font-weight: normal;
+}
 
+@font-face {
+  font-family: "Press-Start-2P";
+  src: url("https://assets.codepen.io/8841541/PressStart2P-Regular.ttf");
+  font-weight: 400;
+  font-style: normal;
+}
+
+// Styles
+* {
+  box-sizing: border-box;
+}
 
 .container {
-    margin: 2rem auto 0;
-    min-width: 300px;
-    width: 90%;
-    height: 100%;
+  margin: 2rem auto 0;
+  width: 90%;
+  height: 100%;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  .vcr {
+    min-width: 250px;
+    aspect-ratio: 5/1;
 
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
 
-    @include tablet {
-        width: 769px;
-    }
+    font-size: 0.7rem;
+    line-height: 0.5rem;
 
-    .tv {
-        width: 100%;
+    .vcrtop {
+      width: 100%;
+      aspect-ratio: 12.5/1;
+      min-height: 20px;
+
+      overflow: hidden;
+
+      .carriage {
+        width: 40%;
+        height: 100%;
 
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
 
-        .woodframe {
-            border: 1rem solid SaddleBrown;
-            width: calc(100% - 2rem);
-            .crt {
-                width: calc(100% - 1rem);
-                aspect-ratio: 4 / 3;
+        margin-left: 10%;
+        
+        cursor: pointer;
 
-                background-color: #181818;
-                border-style: solid;
-                border-color: silver;
-                border-width: 0.5rem;
-
-                position: relative;
-
-                &__contents {
-                    width: 100%;
-                    aspect-ratio: 4/3;
-                    position: relative;
-                }
-                &__image {
-                    width: 100%;
-                    height: 100%;
-
-                    background-repeat: no-repeat;
-                    background-size: contain;
-                    background-position: center;
-
-                    position: relative;
-
-                    display: none;
-                    &--on {
-                        display: block;
-                    }
-                }
-
-                &__screen {
-                    width: 100%;
-                    height: 100%;
-
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-
-                    &--on {
-                        background: linear-gradient(to top, #fff, #fff, #666666, #666666);
-                        background-size: cover;
-                        background-size: 100% 0.3125rem;
-                        animation: scanlines;
-                        animation-duration: 1s;
-                        animation-iteration-count: infinite;
-                        opacity: 0.25;
-                    }
-                }
-
-                &__bezel {
-                    width: 100%;
-                    height: 100%;
-                    background-image: url("./assets/bezel.png");
-                    background-repeat: no-repeat;
-                    background-size: 100% 100%;
-
-                    position: absolute;
-                    top: 0;
-                    right: 0;
-                    bottom: 0;
-                    left: 0;
-                    opacity: 1;
-                }
-
-                .channel {
-                    width: 15%;
-                    aspect-ratio: 1 / 1;
-
-                    display: none;
-                    justify-content: center;
-                    align-items: center;
-
-                    color: white;
-                    background-color: blue;
-
-                    position: absolute;
-                    top: 7.5%;
-                    left: 7.5%;
-
-                    @extend .press-start-2p;
-
-                    &--on {
-                        display: flex;
-                    }
-                }
-            }
+        &--close {
+          animation: cassetteOpenClose 1s ease-in-out forwards;
+        }
+        &--open {
+          animation: cassetteOpenClose 1s ease-in-out forwards reverse;
         }
 
-        .base {
-            height: 1.5rem;
-            width: 80%;
+        .top {
+          width: 100%;
+          height: 10%;
+          background: $maincolour;
+          border: 2px solid $highlightcolour;
+        }
 
-            background: #010101;
-            border-radius: 0 0 0.625rem 0.625rem;
+        .middle {
+          width: 94%;
+          height: 100%;
+
+          display: flex;
+          justify-content: space-around;
+
+          .strut {
+            border: 1px solid $darkcolour;
+            width: 1%;
+            height: 100%;
+          }
+          .tapespace {
+            width: 98%;
+            height: 100%;
 
             display: flex;
-            flex-direction: row-reverse;
+            flex-direction: column;
+            justify-content: space-around;
             align-items: center;
 
-            &__buttons {
-                width: 60%;
-                height: 1rem;
+            .cassette {
+              width: 98%;
+              height: 75%;
+              background: $darkcolour;
+              border-radius: 3px;
 
-                margin-right: 1.25rem;
+              display: flex;
+              align-items: center;
+              justify-content: space-around;
 
-                background: #191919;
-
-                display: flex;
-                justify-content: space-between;
-                align-items: center;
-            }
-
-            &__button {
-                width: 1.25rem;
-                height: 1.25rem;
-
-                font-size: 0.75rem;
-                color: white;
-                background: black;
+              &__label {
+                width: 75%;
+                height: 80%;
+                border-radius: 3px;
+                background: white;
 
                 display: flex;
                 justify-content: center;
                 align-items: center;
-            }
 
-            &__lbl{
-                font-size: .25rem;
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-
-                @extend .press-start-2p;
+                font-family: "Marker";
+              }
+              &__spacer {
+                width: 15%;
+                height: 80%;
+              }
             }
-
-            .up {
-                transform: rotate(-90deg);
+            .holder {
+              width: 100%;
+              height: 1%;
+              border: 1px solid $darkcolour;
             }
-            .down {
-                transform: rotate(-90deg);
-            }
+          }
         }
+      }
     }
 
-    .shelf {
-        width: 100%;
-        height: 1rem;
+    .vcrfront {
+      width: 100%;
+      height: 80%;
+      min-height: 40px;
 
-        background: #010101;
-    }
+      background: silver;
+      border: 3px solid darkgray;
 
-    .remote {
-        width: 50%;
-        margin-top: 10%;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
 
-        background-color: #111;
+      &__power,
+      &__controls,
+      &__display {
+        height: 86%;
+      }
 
-        border: 2px solid silver;
-        border-radius: 0.625rem;
-        padding: 0.5rem;
+      &__power {
+        width: 24%;
+        position: relative;
 
-        // groupings
-        &__firstrowbuttons,
-        &__numbers,
-        &__functionbuttons {
-            width: 100%;
+        .powerbtn {
+          width: 30%;
+          aspect-ratio: 1.25/1;
+
+          position: relative;
+          top: 5%;
+          left: 20%;
+
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+
+          background: $darkcolour;
+
+          cursor: pointer;
+
+          .powerbutton {
+            background: $maincolour;
+            width: 94%;
+            height: 92%;
 
             display: flex;
-            gap: 0.5rem;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+
+            &__light {
+              width: 40%;
+              aspect-ratio: 1.5/1;
+              border: 2px solid darkgray;
+
+              background: $highlightcolour;
+
+              &--on {
+                background: $powerlightcolour;
+              }
+            }
+            &__lbl {
+              width: 20%;
+              text-align: center;
+            }
+
+            &:active {
+              transform: translate(0, $buttonpressdistance);
+            }
+          }
+        }
+      }
+
+      &__controls {
+        width: 35%;
+        background: $darkcolour;
+
+        display: flex;
+        align-items: center;
+        justify-content: space-around;
+
+        .playrecrewff {
+          width: 46%;
+          height: 96%;
+          background: $maincolour;
+          position: relative;
+
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+
+          .playbtn,
+          .recordbtn,
+          .rewbtn,
+          .ffbtn {
+            width: 50%;
+            height: 50%;
+          }
+
+          .playbtn {
+            position: relative;
+            background: $maincolour;
+            cursor: pointer;
+
+            .playbutton {
+              transform: rotate(90deg);
+              position: absolute;
+              top: 20%;
+              left: 15%;
+            }
+
+            &:active {
+              transform: translate(
+                -$buttonpressdistance,
+                -$buttonpressdistance
+              );
+            }
+          }
+          .recordbtn {
+            background: $darkcolour;
+            position: relative;
+            clip-path: polygon(0 0, 100% 0, 100% 100%);
+            .recordbutton {
+              width: 95%;
+              height: 95%;
+              background: $recordbuttoncolour;
+
+              position: absolute;
+              top: 0;
+              right: 0;
+              clip-path: polygon(0 0, 100% 0, 100% 100%);
+
+              .recordicon {
+                position: absolute;
+                top: 10%;
+                right: 15%;
+                font-size: 0.9rem;
+                line-height: 0.6rem;
+              }
+            }
+
+            &:active {
+              transform: translate($buttonpressdistance, -$buttonpressdistance);
+            }
+          }
+          .rewbtn {
+            position: relative;
+            cursor: pointer;
+
+            .rewbutton {
+              position: absolute;
+              bottom: 20%;
+              left: 15%;
+            }
+
+            &:active {
+              background: $maincolour;
+              transform: translate(-$buttonpressdistance, $buttonpressdistance);
+            }
+          }
+          .ffbtn {
+            position: relative;
+            cursor: pointer;
+
+            .ffbutton {
+              position: absolute;
+              bottom: 20%;
+              right: 15%;
+            }
+
+            &:active {
+              background: $maincolour;
+              transform: translate($buttonpressdistance, $buttonpressdistance);
+            }
+          }
+        }
+        .stoppause {
+          width: 25%;
+          height: 96%;
+          background: $maincolour;
+
+          display: flex;
+          flex-direction: column;
+
+          .stopbtn,
+          .pausebtn {
+            width: 100%;
+            height: 50%;
+            cursor: pointer;
+
+            background: $maincolour;
+            position: relative;
+          }
+
+          .stopbtn {
+            .stopbutton {
+              position: absolute;
+              top: 20%;
+              left: 50%;
+              transform: translate(-50%, 0);
+            }
+            &:active {
+              transform: translate(0, -$buttonpressdistance);
+            }
+          }
+          .pausebtn {
+            .pausebutton {
+              position: absolute;
+              bottom: 20%;
+              left: 50%;
+              transform: translate(-50%, 0);
+            }
+            &:active {
+              transform: translate(0, $buttonpressdistance);
+            }
+          }
         }
 
-        &__firstrowbuttons {
-            justify-content: space-around;
-            margin-bottom: 0.5rem;
+        .eject {
+          width: 25%;
+          height: 96%;
+          background: $maincolour;
+
+          .ejectbtn {
+            width: 100%;
+            height: 100%;
+            background: $maincolour;
+            position: relative;
+            cursor: pointer;
+
+            .ejectbutton {
+              position: absolute;
+              bottom: 5%;
+              left: 50%;
+              transform: translate(-50%, 0);
+            }
+
+            &:active {
+              transform: translate(0, $buttonpressdistance);
+            }
+          }
         }
+      }
 
-        &__numbers {
-            justify-content: space-around;
-                        flex-wrap: wrap;
+      &__display {
+        width: 41%;
+        background: $darkcolour;
 
-            margin-bottom: 0.5rem;
-        }
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-        &__functionbuttons {
-            justify-content: space-around;
-        }
+        .displayarea {
+          width: 90%;
+          height: 80%;
 
-        // Buttons
-        &__firstrowbutton,
-        &__number,
-        &__functionlbl,
-        &__functionbutton {
-            height: 1.5rem;
+          .displaytext {
+            width: 100%;
+            height: 100%;
+
+            font-family: "Digital-7";
+            font-size: 1.5rem;
+            color: $highlightcolour;
 
             display: flex;
             justify-content: center;
             align-items: center;
 
-            background: black;
-
-            font-size: 0.4rem;
-            color: white;
-            @extend .press-start-2p;
-
-            &:active {
-                animation: buttonpress 0.05s;
+            &--on {
+              color: white;
             }
+          }
+        }
+      }
+    }
+    .base {
+      width: 90%;
+      height: 20%;
+      min-height: 10px;
+
+      background: $darkcolour;
+
+      clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
+    }
+  }
+
+  .tv {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    @include tablet {
+      width: 768px;
+    }
+
+    .woodframe {
+      border: 1rem solid SaddleBrown;
+      width: 100%;
+
+      .crt {
+        width: 100%;
+        aspect-ratio: 4 / 3;
+
+        background-color: #181818;
+        border-style: solid;
+        border-color: silver;
+        border-width: 0.5rem;
+
+        position: relative;
+
+        &__contents {
+          width: 100%;
+          aspect-ratio: 4/3;
+          position: relative;
+        }
+        &__image {
+          width: 100%;
+          height: 99%;
+
+          background-repeat: no-repeat;
+          background-size: contain;
+          background-position: center;
+
+          position: relative;
+
+          display: none;
+          &--on {
+            display: block;
+          }
         }
 
-        &__firstrowbutton {
-            width: 45%;
-            border: 0.5px dotted silver;
+        .channel {
+          width: 15%;
+          aspect-ratio: 1 / 1;
+
+          display: none;
+          justify-content: center;
+          align-items: center;
+
+          color: white;
+          background-color: blue;
+
+          position: absolute;
+          top: 7.5%;
+          left: 7.5%;
+
+          font-family: "Press-Start-2p";
+
+          &--on {
+            display: flex;
+          }
         }
 
-        &__number {
-            width: 28%;
-            border: 0.5px dotted silver;
+        &__screen {
+          width: 100%;
+          height: 100%;
+
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+
+          &--on {
+            background: linear-gradient(to top, #fff, #fff, #666666, #666666);
+            background-size: cover;
+            background-size: 100% 0.3125rem;
+            animation: scanlines;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+            opacity: 0.25;
+          }
         }
 
-        &__functiongroup {
-            width: 30%;
+        &__bezel {
+          width: 100%;
+          height: 100%;
+          background-image: url("https://assets.codepen.io/8841541/bezel.png");
+          background-repeat: no-repeat;
+          background-size: 100% 100%;
+
+          position: absolute;
+          top: 0;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          opacity: 1;
+        }
+      }
+    }
+
+    .base {
+      height: 1.5rem;
+      width: 80%;
+
+      background: #010101;
+      border-radius: 0 0 0.625rem 0.625rem;
+
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
+
+      .buttons {
+        width: 60%;
+        height: 1.25rem;
+
+        margin-right: 1.25rem;
+
+        background: #191919;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        @include tablet {
+          width: 25%;
+        }
+
+        .button {
+          width: 1.25rem;
+          height: 1.25rem;
+
+          font-size: 0.75rem;
+          color: white;
+          background: black;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
+          cursor: pointer;
+
+          &--volumedown,
+          &--volumeup,
+          &--channeldown,
+          &--channelup,
+          &--power {
+            &:active {
+              transform: translateY($buttonpressdistance);
+            }
+          }
+
+          &--label {
+            font-size: 0.4rem;
+            font-family: "Press-Start-2P";
+            color: white;
 
             display: flex;
-            flex-direction: column;
-            gap: 0.5rem;
-
-            &--mute {
-                justify-content: center;
-            }
+            justify-content: center;
+            align-items: center;
+          }
         }
-
-        &__functionlbl {
-            background: inherit;
-        }
-
-        &__functionbutton {
-            width: 100%;
-            border: 0.5px dotted silver;
-        }
+      }
     }
+  }
 }
