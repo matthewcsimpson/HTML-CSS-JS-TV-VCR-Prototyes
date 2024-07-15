@@ -1,10 +1,17 @@
 $breakpoint-tablet: 767px;
 
-$maincolour: silver;
-$highlightcolour: darkgray;
-$darkcolour: black;
-$powerlightcolour: chartreuse;
-$recordbuttoncolour: orange;
+$vcrMainColour: silver;
+$vcrHighlightColour: darkgray;
+$vcrDarkColour: black;
+$vcrPowerLightColour: chartreuse;
+$vcrRecordButtonColour: orange;
+
+$tvFrameColour: SaddleBrown;
+$tvHighlightColour: silver;
+$tvDarkcolour: black;
+$tvOffColour: #181818;
+$tvTextColour: white;
+$tvChanelBackgroundColour: blue;
 
 $buttonpressdistance: 0.0625rem;
 
@@ -22,6 +29,15 @@ $buttonpressdistance: 0.0625rem;
   }
   100% {
     transform: translateY(100%);
+  }
+}
+
+@keyframes vhsLoading {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
   }
 }
 
@@ -69,7 +85,12 @@ $buttonpressdistance: 0.0625rem;
   justify-content: center;
   align-items: center;
 
+  @include tablet {
+    width: 768px;
+  }
+
   .vcr {
+    width: 70%;
     min-width: 250px;
     aspect-ratio: 5/1;
 
@@ -79,6 +100,10 @@ $buttonpressdistance: 0.0625rem;
 
     font-size: 0.7rem;
     line-height: 0.5rem;
+
+    @include tablet {
+      width: 70%;
+    }
 
     .vcrtop {
       width: 100%;
@@ -97,7 +122,7 @@ $buttonpressdistance: 0.0625rem;
         align-items: center;
 
         margin-left: 10%;
-        
+
         cursor: pointer;
 
         &--close {
@@ -110,8 +135,8 @@ $buttonpressdistance: 0.0625rem;
         .top {
           width: 100%;
           height: 10%;
-          background: $maincolour;
-          border: 2px solid $highlightcolour;
+          background: $vcrMainColour;
+          border: 2px solid $vcrHighlightColour;
         }
 
         .middle {
@@ -122,7 +147,7 @@ $buttonpressdistance: 0.0625rem;
           justify-content: space-around;
 
           .strut {
-            border: 1px solid $darkcolour;
+            border: 1px solid $vcrDarkColour;
             width: 1%;
             height: 100%;
           }
@@ -138,7 +163,7 @@ $buttonpressdistance: 0.0625rem;
             .cassette {
               width: 98%;
               height: 75%;
-              background: $darkcolour;
+              background: $vcrDarkColour;
               border-radius: 3px;
 
               display: flex;
@@ -165,7 +190,7 @@ $buttonpressdistance: 0.0625rem;
             .holder {
               width: 100%;
               height: 1%;
-              border: 1px solid $darkcolour;
+              border: 1px solid $vcrDarkColour;
             }
           }
         }
@@ -207,12 +232,12 @@ $buttonpressdistance: 0.0625rem;
           justify-content: center;
           align-items: center;
 
-          background: $darkcolour;
+          background: $vcrDarkColour;
 
           cursor: pointer;
 
           .powerbutton {
-            background: $maincolour;
+            background: $vcrMainColour;
             width: 94%;
             height: 92%;
 
@@ -226,10 +251,10 @@ $buttonpressdistance: 0.0625rem;
               aspect-ratio: 1.5/1;
               border: 2px solid darkgray;
 
-              background: $highlightcolour;
+              background: $vcrHighlightColour;
 
               &--on {
-                background: $powerlightcolour;
+                background: $vcrPowerLightColour;
               }
             }
             &__lbl {
@@ -246,7 +271,7 @@ $buttonpressdistance: 0.0625rem;
 
       &__controls {
         width: 35%;
-        background: $darkcolour;
+        background: $vcrDarkColour;
 
         display: flex;
         align-items: center;
@@ -255,7 +280,7 @@ $buttonpressdistance: 0.0625rem;
         .playrecrewff {
           width: 46%;
           height: 96%;
-          background: $maincolour;
+          background: $vcrMainColour;
           position: relative;
 
           display: flex;
@@ -272,7 +297,7 @@ $buttonpressdistance: 0.0625rem;
 
           .playbtn {
             position: relative;
-            background: $maincolour;
+            background: $vcrMainColour;
             cursor: pointer;
 
             .playbutton {
@@ -283,20 +308,17 @@ $buttonpressdistance: 0.0625rem;
             }
 
             &:active {
-              transform: translate(
-                -$buttonpressdistance,
-                -$buttonpressdistance
-              );
+              transform: translate(-$buttonpressdistance, -$buttonpressdistance);
             }
           }
           .recordbtn {
-            background: $darkcolour;
+            background: $vcrDarkColour;
             position: relative;
             clip-path: polygon(0 0, 100% 0, 100% 100%);
             .recordbutton {
               width: 95%;
               height: 95%;
-              background: $recordbuttoncolour;
+              background: $vcrRecordButtonColour;
 
               position: absolute;
               top: 0;
@@ -327,7 +349,7 @@ $buttonpressdistance: 0.0625rem;
             }
 
             &:active {
-              background: $maincolour;
+              background: $vcrMainColour;
               transform: translate(-$buttonpressdistance, $buttonpressdistance);
             }
           }
@@ -342,7 +364,7 @@ $buttonpressdistance: 0.0625rem;
             }
 
             &:active {
-              background: $maincolour;
+              background: $vcrMainColour;
               transform: translate($buttonpressdistance, $buttonpressdistance);
             }
           }
@@ -350,7 +372,7 @@ $buttonpressdistance: 0.0625rem;
         .stoppause {
           width: 25%;
           height: 96%;
-          background: $maincolour;
+          background: $vcrMainColour;
 
           display: flex;
           flex-direction: column;
@@ -361,7 +383,7 @@ $buttonpressdistance: 0.0625rem;
             height: 50%;
             cursor: pointer;
 
-            background: $maincolour;
+            background: $vcrMainColour;
             position: relative;
           }
 
@@ -392,12 +414,12 @@ $buttonpressdistance: 0.0625rem;
         .eject {
           width: 25%;
           height: 96%;
-          background: $maincolour;
+          background: $vcrMainColour;
 
           .ejectbtn {
             width: 100%;
             height: 100%;
-            background: $maincolour;
+            background: $vcrMainColour;
             position: relative;
             cursor: pointer;
 
@@ -417,7 +439,7 @@ $buttonpressdistance: 0.0625rem;
 
       &__display {
         width: 41%;
-        background: $darkcolour;
+        background: $vcrDarkColour;
 
         display: flex;
         justify-content: center;
@@ -433,7 +455,7 @@ $buttonpressdistance: 0.0625rem;
 
             font-family: "Digital-7";
             font-size: 1.5rem;
-            color: $highlightcolour;
+            color: $vcrHighlightColour;
 
             display: flex;
             justify-content: center;
@@ -451,7 +473,7 @@ $buttonpressdistance: 0.0625rem;
       height: 20%;
       min-height: 10px;
 
-      background: $darkcolour;
+      background: $vcrDarkColour;
 
       clip-path: polygon(0 0, 100% 0, 97% 100%, 3% 100%);
     }
@@ -464,21 +486,17 @@ $buttonpressdistance: 0.0625rem;
     justify-content: center;
     align-items: center;
 
-    @include tablet {
-      width: 768px;
-    }
-
     .woodframe {
-      border: 1rem solid SaddleBrown;
+      border: 1rem solid $tvFrameColour;
       width: 100%;
 
       .crt {
         width: 100%;
         aspect-ratio: 4 / 3;
 
-        background-color: #181818;
+        background-color: $tvOffColour;
         border-style: solid;
-        border-color: silver;
+        border-color: $tvHighlightColour;
         border-width: 0.5rem;
 
         position: relative;
@@ -491,16 +509,15 @@ $buttonpressdistance: 0.0625rem;
         &__image {
           width: 100%;
           height: 99%;
-
           background-repeat: no-repeat;
           background-size: contain;
           background-position: center;
-
           position: relative;
-
           display: none;
+
           &--on {
             display: block;
+            background-color: $tvChanelBackgroundColour;
           }
         }
 
@@ -512,8 +529,8 @@ $buttonpressdistance: 0.0625rem;
           justify-content: center;
           align-items: center;
 
-          color: white;
-          background-color: blue;
+          color: $tvTextColour;
+          background-color: $tvChanelBackgroundColour;
 
           position: absolute;
           top: 7.5%;
@@ -526,7 +543,44 @@ $buttonpressdistance: 0.0625rem;
           }
         }
 
-        &__screen {
+        .indicator {
+          width: 15%;
+          aspect-ratio: 1 / 1;
+
+          display: none;
+          justify-content: center;
+          align-items: center;
+
+          color: $tvTextColour;
+          background-color: $tvChanelBackgroundColour;
+
+          position: absolute;
+          top: 7.5%;
+          right: 7.5%;
+
+          font-family: "Press-Start-2p";
+
+          &__icon {
+            width: 80%;
+            display: none;
+
+            &--flashing {
+              animation: vhsLoading;
+              animation-iteration-count: infinite;
+              animation-duration: 2;
+            }
+
+            &--on {
+              display: flex;
+            }
+          }
+
+          &--on {
+            display: flex;
+          }
+        }
+
+        &__glass {
           width: 100%;
           height: 100%;
 
@@ -596,8 +650,8 @@ $buttonpressdistance: 0.0625rem;
           height: 1.25rem;
 
           font-size: 0.75rem;
-          color: white;
-          background: black;
+          color: $tvTextColour;
+          background: $tvDarkcolour;
 
           display: flex;
           justify-content: center;
@@ -618,7 +672,7 @@ $buttonpressdistance: 0.0625rem;
           &--label {
             font-size: 0.4rem;
             font-family: "Press-Start-2P";
-            color: white;
+            color: $tvTextColour;
 
             display: flex;
             justify-content: center;
