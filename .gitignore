@@ -34,3 +34,5 @@ config.js
 # Ignore package lock files
 package-lock.json
 yarn.lock
+
+slim.html

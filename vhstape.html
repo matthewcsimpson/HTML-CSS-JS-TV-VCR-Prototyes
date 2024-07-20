@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>VHS Tape Prototype</title>
+    <link rel="stylesheet" href="./styles/vhstape.css" />
+  </head>
+
+  <body>
+    <div class="vhs">
+      <div class="tape-cover">
+        <!-- ---------------------- front ---------------------- -->
+        <div class="tape-cover__face tape-cover__face--front">
+          <div class="tape-cover__topsection">
+            <div class="frontbrand">
+              <p class="frontbrand__text">tape</p>
+            </div>
+            <div class="frontdetails">
+              <p class="frontdetails__text frontdetails__text--line">dynamic</p>
+              <p class="frontdetails__text frontdetails__text--type">t-120</p>
+            </div>
+          </div>
+          <div class="tape-cover__middlesection">
+            <div class="stripes stripes--yellow"></div>
+            <div class="stripes stripes--orange"></div>
+            <div class="stripes stripes--red"></div>
+            <div class="stripes stripes--magenta"></div>
+            <div class="stripes stripes--purple"></div>
+          </div>
+          <div class="tape-cover__bottomsection">
+            <div class="frontbottomdetails">
+              <img
+                src="https://assets.codepen.io/8841541/VHS_logo.png"
+                alt="VHS Logo"
+                class="frontbottomdetails--logo"
+              />
+
+              <div class="frontbottomdetails--textbox">
+                <p class="frontbottomdetails--text frontbottomdetails--texttop">
+                  video cassette
+                </p>
+                <p class="frontbottomdetails--text">
+                  video recording and playback
+                </p>
+                <p class="frontbottomdetails--text">
+                  enregistrement et lecture du video
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- ---------------------- back ---------------------- -->
+        <div class="tape-cover__face tape-cover__face--back">
+          <div class="tape-cover__topsection"></div>
+          <div class="tape-cover__middlesection">
+            <div class="stripes stripes--yellow"></div>
+            <div class="stripes stripes--orange"></div>
+            <div class="stripes stripes--red"></div>
+            <div class="stripes stripes--magenta"></div>
+            <div class="stripes stripes--purple"></div>
+          </div>
+          <div class="tap-cover__bottomsection"></div>
+        </div>
+
+        <!-- ---------------------- case spine ---------------------- -->
+        <div class="tape-cover__face tape-cover__face--left">
+          <div class="tape-cover__topsection">
+            <div class="spinebrand">
+              <p class="spinebrand__text">tape</p>
+            </div>
+            <div class="spinedetails">
+              <div class="spinedetails__text spinedetails__text--left">
+                <p class="spinedetails__line">dynamic</p>
+              </div>
+              <div class="spinedetails__text spinedetails__text--right">
+                <p class="spinedetails__type">t-120</p>
+              </div>
+            </div>
+          </div>
+          <div class="tape-cover__middlesection">
+            <div class="stripes stripes--yellow"></div>
+            <div class="stripes stripes--orange"></div>
+            <div class="stripes stripes--red"></div>
+            <div class="stripes stripes--magenta"></div>
+            <div class="stripes stripes--purple"></div>
+          </div>
+          <div class="tape-cover__bottomsection">
+            <img
+              src="https://assets.codepen.io/8841541/VHS_logo.png"
+              alt="VHS Logo"
+              class="spine-bottom-logo"
+            />
+          </div>
+        </div>
+
+        <!-- ---------------------- case top ---------------------- -->
+        <div class="tape-cover__face tape-cover__face--top"></div>
+
+        <!-- ---------------------- case bottom ---------------------- -->
+        <div class="tape-cover__face tape-cover__face--bottom"></div>
+
+        <!-- ---------------------- tape ---------------------- -->
+        <div class="vhs-tape">
+          <div class="vhs-tape__face vhs-tape__face--front"></div>
+          <div class="vhs-tape__face vhs-tape__face--back"></div>
+          <div class="vhs-tape__face vhs-tape__face--right">
+            <div class="vhs-tape__labelbuffer vhs-tape__labelbuffer--top"></div>
+            <div class="vhs-tape__label">
+              <p class="vhs-tape__labeltext">Detour</p>
+            </div>
+            <div
+              class="vhs-tape__labelbuffer vhs-tape__labelbuffer--bottom"
+            ></div>
+          </div>
+          <div class="vhs-tape__face vhs-tape__face--left"></div>
+          <div class="vhs-tape__face vhs-tape__face--top"></div>
+          <div class="vhs-tape__face vhs-tape__face--bottom"></div>
+        </div>
+      </div>
+    </div>
+
+    <p class="radio-group">
+      <label>
+        <input type="radio" name="rotate-tape-side" value="front" checked />
+        front
+      </label>
+      <label>
+        <input type="radio" name="rotate-tape-side" value="back" /> back
+      </label>
+      <label>
+        <input type="radio" name="rotate-tape-side" value="right" /> label
+      </label>
+      <label>
+        <input type="radio" name="rotate-tape-side" value="left" /> spine
+      </label>
+      <label>
+        <input type="radio" name="rotate-tape-side" value="top" /> top
+      </label>
+      <label>
+        <input type="radio" name="rotate-tape-side" value="bottom" /> bottom
+      </label>
+    </p>
+  </body>
+  <script type="text/javascript" src="./scripts/vhstape.js"></script>
+</html>

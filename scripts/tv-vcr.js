@@ -41,6 +41,8 @@ let movieTime = 0;
 let rewindSpeed = 1;
 let currentVolume = 1;
 
+// Helpers
+
 /**
  * Adds a class to an element.
  * @param {HTMLElement} element - The element to add the class to.
@@ -61,13 +63,13 @@ const removeClass = (element, className) => {
 
 /**
  * Gets the current power status of the TV and VCR
- * @returns powerStatus - The current power status of the TV and VCR
+ * @returns 
  */
 const getCurrentStatus = () => {
   return {
     tvIsOn: document.querySelector(".crt__glass--on"),
     vcrIsOn: document.querySelector(".powerbutton__light--on"),
-    carriageIsClosed: document.querySelector(".carriage--close"),
+    carriageIsClosed: document.querySelector(".carriage--close")
   };
 };
 
@@ -239,7 +241,6 @@ const channelDisplay = () => {
   }, 3000);
 };
 
-
 /**
  * Increment the channel
  */
@@ -295,13 +296,6 @@ vcrPlayButton.addEventListener("click", () => {
   }
 });
 
-// Pause Button
-vcrPauseButton.addEventListener("click", () => {
-  if (tvChannelThree.getAttribute("src") === videoURL) {
-    tvChannelThree.pause();
-  }
-});
-
 // Fast Forward Button
 vcrFfButton.addEventListener("click", () => {
   const { vcrIsOn } = getCurrentStatus();
@@ -354,6 +348,13 @@ vcrRewButton.addEventListener("click", () => {
 
 // Stop Button
 vcrStopButton.addEventListener("click", () => {
+  if (tvChannelThree.getAttribute("src") === videoURL) {
+    tvChannelThree.pause();
+  }
+});
+
+// Pause Button
+vcrPauseButton.addEventListener("click", () => {
   if (tvChannelThree.getAttribute("src") === videoURL) {
     tvChannelThree.pause();
   }

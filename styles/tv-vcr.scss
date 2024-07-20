@@ -76,6 +76,10 @@ $buttonpressdistance: 0.0625rem;
 // Styles
 * {
   box-sizing: border-box;
+
+  -webkit-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
 }
 
 .container {
@@ -313,7 +317,10 @@ $buttonpressdistance: 0.0625rem;
             }
 
             &:active {
-              transform: translate(-$buttonpressdistance, -$buttonpressdistance);
+              transform: translate(
+                -$buttonpressdistance,
+                -$buttonpressdistance
+              );
             }
           }
           .recordbtn {
@@ -529,7 +536,7 @@ $buttonpressdistance: 0.0625rem;
             visibility: hidden;
           }
           &--static {
-            background-image: url("./assets/imgs/static.gif");
+            background-image: url("https://assets.codepen.io/8841541/static.gif");
             object-fit: cover;
             object-position: center;
           }
