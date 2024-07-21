@@ -1,4 +1,4 @@
-# HTML-CSS-JavaScript Television/VCR/ 
+# HTML-CSS-JavaScript TV/VCR Project Prototypes 
 
 This project was created to house prototypes for a website concept I am building.  
 
