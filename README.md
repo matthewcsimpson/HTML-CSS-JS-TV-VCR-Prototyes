@@ -1,15 +1,15 @@
 # HTML-CSS-JavaScript TV/VCR Project Prototypes 
 
-This project was created to house prototypes for a website concept I am building.  
+This project was created to house prototypes for a website concept I am building.   
 
 ### TV & VCR
 The Television itself is built entirely in HTML and CSS, including the scan lines over the picture. 
 
 Turning the TV on and changing the channel is powered by Vanilla JavaScript.  
 
-You can see the TV up and running in [this codepen](https://codepen.io/matthewcsimpson/pen/KKLQwxd)
+You can see the TV up and running in [this codepen](https://codepen.io/matthewcsimpson/pen/jOjNYyM)
 
-![Televison](https://assets.codepen.io/8841541/internal/screenshots/pens/KKLQwxd.custom.png?version=1719949313)
+![Televison](https://assets.codepen.io/8841541/internal/screenshots/pens/jOjNYyM.custom.jpg?version=1721547473)
 
 ### VHS Tape 
 
