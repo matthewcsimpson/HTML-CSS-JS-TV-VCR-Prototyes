@@ -10,8 +10,10 @@
 
 <body>
   <div class="vhs">
+
     <!-- -------------------------------------------- case ------------------------------------------- -->
     <div class="tape-cover">
+
       <!-- ---------------------- case front ---------------------- -->
       <div class="tape-cover__face tape-cover__face--front">
         <div class="tape-cover__topsection">
@@ -33,7 +35,6 @@
         <div class="tape-cover__bottomsection">
           <div class="frontbottomdetails">
             <img src="https://assets.codepen.io/8841541/VHS_logo.png" alt="VHS Logo" class="frontbottomdetails--logo" />
-
             <div class="frontbottomdetails--textbox">
               <p class="frontbottomdetails--text frontbottomdetails--texttop">
                 video cassette
@@ -51,7 +52,50 @@
 
       <!-- ---------------------- case back ---------------------- -->
       <div class="tape-cover__face tape-cover__face--back">
-        <div class="tape-cover__topsection"></div>
+        <div class="tape-cover__topsection tape-cover__topsection--alignlow">
+          <div class="backbrand">
+            <div class="backbrand__rectable">
+              <div class="backbrand__rectablerow">
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">Mode</p>
+                </div>
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">SP</p>
+                </div>
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">LP</p>
+                </div>
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">EP</p>
+                </div>
+              </div>
+              <div class="backbrand__rectablerow">
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">Time</p>
+                </div>
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">2 hr.</p>
+                </div>
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">4 hr.</p>
+                </div>
+                <div class="backbrand__rectablecell">
+                  <p class="backbrand__rectabletext">6 hr.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="backdetails">
+            <img src="https://assets.codepen.io/8841541/VHS_logo.png" alt="VHS Logo" class="backdetails__logo" />
+            <div class="backdetails__textbox">
+              <p class="backdetails__text">&#9209; This videocassette can be used with any video cassette player or recorder dislaying the mark <img src="https://assets.codepen.io/8841541/VHS_logo.png" alt="VHS Logo" class="backdetails__logointext" />
+              </p>
+              <p class="backdetails__text">&#9209; Cette vidéocassette peut etre utilisé avec tous le magnétoscopes possédant le repére <img src="https://assets.codepen.io/8841541/VHS_logo.png" alt="VHS Logo" class="backdetails__logointext" />
+              </p>
+              </div>
+          </div>
+
+        </div>
         <div class="tape-cover__middlesection">
           <div class="stripes stripes--yellow"></div>
           <div class="stripes stripes--orange"></div>
@@ -59,7 +103,17 @@
           <div class="stripes stripes--magenta"></div>
           <div class="stripes stripes--purple"></div>
         </div>
-        <div class="tap-cover__bottomsection"></div>
+        <div class="tape-cover__bottomsection">
+          <div class="backbottomdetails">
+            <div class="backbottomdetails__left">
+              <p class="backbottomdetails__lefttext">tape magnetic products of america</p>
+            </div>
+            <div class="backbottomdetails__right">
+              <p class="backbottomdetails__righttext">made in the USA</p>
+              <p class="backbottomdetails__righttext">fabriqué aux Etats-Unis</p>
+            </div>
+          </div>
+        </div>
       </div>
 
       <!-- ---------------------- case spine ---------------------- -->
@@ -90,10 +144,31 @@
       </div>
 
       <!-- ---------------------- case top ---------------------- -->
-      <div class="tape-cover__face tape-cover__face--top"></div>
+      <div class="tape-cover__face tape-cover__face--top">
+        <div class="top-bottom">
+          <div class="top-bottom__top">
+            <p class="top-bottom__brand">tape</p>
+          </div>
+          <div class="top-bottom__bottom">
+            <p class="top-bottom__type">t-120</p>
+            <img src="https://assets.codepen.io/8841541/VHS_logo.png" alt="VHS Logo" class="top-bottom__logo" />
+          </div>
+        </div>
+      </div>
 
       <!-- ---------------------- case bottom ---------------------- -->
-      <div class="tape-cover__face tape-cover__face--bottom"></div>
+      <div class="tape-cover__face tape-cover__face--bottom">
+        <div class="top-bottom">
+          <div class="top-bottom__top">
+            <p class="top-bottom__brand">tape</p>
+          </div>
+          <div class="top-bottom__bottom">
+            <p class="top-bottom__type">t-120</p>
+            <img src="https://assets.codepen.io/8841541/VHS_logo.png" alt="VHS Logo" class="top-bottom__logo" />
+          </div>
+        </div>
+
+      </div>
 
       <!-- -------------------------------------------- tape -------------------------------------------- -->
       <div class="vhs-tape">
@@ -112,7 +187,7 @@
           </div>
           <div class="vhs-tape__labelbuffer vhs-tape__labelbuffer--bottom"></div>
         </div>
-        
+
         <!-- ---------------------- tape spine side  ---------------------- -->
         <div class="vhs-tape__face vhs-tape__face--left"></div>
 
@@ -127,11 +202,11 @@
 
   <p class="radio-group">
     <label>
-      <input type="radio" name="rotate-tape-side" value="front" checked />
+      <input type="radio" name="rotate-tape-side" value="front" />
       front
     </label>
     <label>
-      <input type="radio" name="rotate-tape-side" value="back" /> back
+      <input type="radio" name="rotate-tape-side" value="back" checked /> back
     </label>
     <label>
       <input type="radio" name="rotate-tape-side" value="right" /> label
