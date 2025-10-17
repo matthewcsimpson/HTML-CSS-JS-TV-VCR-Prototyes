@@ -1,6 +1,6 @@
-# HTML-CSS-JavaScript TV/VCR Project Prototypes 
+## HTML-CSS-JavaScript TV/VCR Project Prototypes 
 
-This project was created to house prototypes for a website concept I am building.   
+This project was created to house prototypes for a website concept.   
 
 ### TV & VCR
 The Television itself is built entirely in HTML and CSS, including the scan lines over the picture. 
